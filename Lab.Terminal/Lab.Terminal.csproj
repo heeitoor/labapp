@@ -43,11 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="1Program.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="2Program.cs" />
     <Compile Include="AcessoDb.cs" />
     <Compile Include="Animal.cs" />
-    <Compile Include="3Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StructA.cs" />
   </ItemGroup>

@@ -1,638 +1,628 @@
-﻿using System;
-using System.Text;
-using System.Text.RegularExpressions;
-using SYS = System;
-using Business = App.Business;
-using Data = App.Data;
-using System.Linq;
-using System.IO;
-
-using System.Diagnostics;
-using System.Collections.Generic;
-using System.Collections;
-using System.Collections.Specialized;
-using App.Business;
-using System.Linq.Expressions;
-
-namespace App.Business
-{
-    public class Pessoa
-    {
-        private int idade;
-
-        public string Nome { get; set; }
-
-        public int Idade
-        {
-            get
-            {
-                return idade;
-            }
-            set
-            {
-                if (value > 18 && IdadeMaiorQueDezoito != null)
-                {
-                    IdadeMaiorQueDezoito(Nome);
-                }
-
-                idade = value;
-            }
-        }
-
-        public delegate void IdadeDelegate(string name);
-
-        public event IdadeDelegate IdadeMaiorQueDezoito;
-    }
-}
-
-namespace App.Console
-{
-    //interface IAppException
-    //{
-    //    DateTime HoraQueAconteceu { get; }
-    //}
-
-    //class AppException : Exception, IAppException
-    //{
-    //    public DateTime HoraQueAconteceu => DateTime.Now;
-    //}
-
-    interface IAnimal
-    {
-        string Nome { get; set; }
-
-        void Comer();
-        void Dormir();
-    }
-
-    struct Cachorro : IAnimal
-    {
-        public string Nome { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-
-        public void Comer()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Dormir()
-        {
-            throw new NotImplementedException();
-        }
-    }
-
-    class Gato : IAnimal
-    {
-        public string Nome { get; set; }
-
-        public void Comer()
-        {
-        }
-
-        public void Dormir()
-        {
-        }
-
-        public void A()
-        {
-
-        }
-    }
-
-    interface IA
-    {
-        void Executar();
-
-        //void A();
-    }
-
-    interface IB
-    {
-        void Executar();
-
-        //void B();
-    }
-
-    class AB : IA, IB
-    {
-        public void Executar()
-        {
-            SYS.Console.WriteLine(this.GetType().Name);
-        }
+﻿//using System;
+//using System.Text;
+//using System.Text.RegularExpressions;
+//using SYS = System;
+//using Business = App.Business;
+//using Data = App.Data;
+//using System.Linq;
+//using System.IO;
+
+//using System.Diagnostics;
+//using System.Collections.Generic;
+//using System.Collections;
+//using System.Collections.Specialized;
+//using App.Business;
+//using System.Linq.Expressions;
+
+//namespace App.Business
+//{
+//    public class Pessoa
+//    {
+//        private int idade;
+
+//        public string Nome { get; set; }
+
+//        public int Idade
+//        {
+//            get
+//            {
+//                return idade;
+//            }
+//            set
+//            {
+//                if (value > 18 && IdadeMaiorQueDezoito != null)
+//                {
+//                    IdadeMaiorQueDezoito(Nome);
+//                }
+
+//                idade = value;
+//            }
+//        }
+
+//        public delegate void IdadeDelegate(string name);
+
+//        public event IdadeDelegate IdadeMaiorQueDezoito;
+//    }
+//}
+
+//namespace App.Console
+//{
+//    //interface IAppException
+//    //{
+//    //    DateTime HoraQueAconteceu { get; }
+//    //}
+
+//    //class AppException : Exception, IAppException
+//    //{
+//    //    public DateTime HoraQueAconteceu => DateTime.Now;
+//    //}
+
+//    interface IAnimal
+//    {
+//        string Nome { get; set; }
+
+//        void Comer();
+//        void Dormir();
+//    }
+
+//    struct Cachorro : IAnimal
+//    {
+//        public string Nome { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+//        public void Comer()
+//        {
+//            throw new NotImplementedException();
+//        }
+
+//        public void Dormir()
+//        {
+//            throw new NotImplementedException();
+//        }
+//    }
+
+//    class Gato : IAnimal
+//    {
+//        public string Nome { get; set; }
+
+//        public void Comer()
+//        {
+//        }
+
+//        public void Dormir()
+//        {
+//        }
+
+//        public void A()
+//        {
+
+//        }
+//    }
+
+//    interface IA
+//    {
+//        void Executar();
 
-        //void IA.Executar()
-        //{
+//        //void A();
+//    }
 
-        //}
+//    interface IB
+//    {
+//        void Executar();
 
-        //void IB.Executar()
-        //{
+//        //void B();
+//    }
 
-        //}
-    }
+//    class AB : IA, IB
+//    {
+//        public void Executar()
+//        {
+//            SYS.Console.WriteLine(this.GetType().Name);
+//        }
 
-    class CompararStrings : IComparer
-    {
-        public int Compare(object x, object y)
-        {
-            throw new NotImplementedException();
-        }
+//        //void IA.Executar()
+//        //{
 
-        public int CompareTo(object obj)
-        {
-            return 0;
-        }
-    }
+//        //}
 
-    interface IRepository<T>
-    {
-        void Insert(T item);
-        void Delete(int id);
-        IQueryable<T> Get();
-    }
+//        //void IB.Executar()
+//        //{
 
-    class AppList<T>
-        where T : IAnimal, new()
-    {
-        private T[] arr = new T[99];
+//        //}
+//    }
 
-        public int Quantidade;
+//    class CompararStrings : IComparer
+//    {
+//        public int Compare(object x, object y)
+//        {
+//            throw new NotImplementedException();
+//        }
 
-        public void Teste()
-        {
-            Quantidade = 1;
+//        public int CompareTo(object obj)
+//        {
+//            return 0;
+//        }
+//    }
 
-            T t = new T();
-        }
+//    interface IRepository<T>
+//    {
+//        void Insert(T item);
+//        void Delete(int id);
+//        IQueryable<T> Get();
+//    }
 
-        public void Add(T item)
-        {
+//    class AppList<T>
+//        where T : IAnimal, new()
+//    {
+//        private T[] arr = new T[99];
 
-        }
-    }
+//        public int Quantidade;
 
-    class Conversoes<Y>
-        where Y : U
-    {
-        public static T Converter<T>(object o)
-            where T : new()
-        {
-            return new T();
-        }
-    }
+//        public void Teste()
+//        {
+//            Quantidade = 1;
 
-    class A : IQueryable<int>
-    {
-        public Type ElementType => throw new NotImplementedException();
+//            T t = new T();
+//        }
 
-        public Expression Expression => throw new NotImplementedException();
+//        public void Add(T item)
+//        {
 
-        public IQueryProvider Provider => throw new NotImplementedException();
+//        }
+//    }
 
-        public IEnumerator<int> GetEnumerator()
-        {
-            throw new NotImplementedException();
-        }
+//    class A : IQueryable<int>
+//    {
+//        public Type ElementType => throw new NotImplementedException();
 
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            throw new NotImplementedException();
-        }
-    }
+//        public Expression Expression => throw new NotImplementedException();
 
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            AppList<Gato> lista = new AppList<Gato>();
+//        public IQueryProvider Provider => throw new NotImplementedException();
 
-            var k = (IAnimal)new Gato();
+//        public IEnumerator<int> GetEnumerator()
+//        {
+//            throw new NotImplementedException();
+//        }
 
+//        IEnumerator IEnumerable.GetEnumerator()
+//        {
+//            throw new NotImplementedException();
+//        }
+//    }
 
-            AB obj = new AB();
-            obj.Executar();
+//    class Program
+//    {
+//        static void Main(string[] args)
+//        {
+//            AppList<Gato> lista = new AppList<Gato>();
 
-            IA ia = obj;
-            ia.Executar();
+//            var k = (IAnimal)new Gato();
 
-            IB ib = obj;
-            ib.Executar();
 
+//            AB obj = new AB();
+//            obj.Executar();
 
+//            IA ia = obj;
+//            ia.Executar();
 
-            //Gato gato = new Gato();
-            //IAnimal animal = gato;
+//            IB ib = obj;
+//            ib.Executar();
 
 
-            //Pessoa p1 = new Pessoa
-            //{
-            //    Nome = "Zelda"
-            //};
 
-            ////p1.IdadeMaiorQueDezoito += ExecutaQuandoForMaior;
+//            //Gato gato = new Gato();
+//            //IAnimal animal = gato;
 
-            //Func<int, bool> seEhPar = (numero) =>
-            //{
-            //    return numero % 2 == 0;
-            //};
 
-            //A(seEhPar, 9);
+//            //Pessoa p1 = new Pessoa
+//            //{
+//            //    Nome = "Zelda"
+//            //};
 
-            //bool par = seEhPar(9);
+//            ////p1.IdadeMaiorQueDezoito += ExecutaQuandoForMaior;
 
-            ////p1.IdadeMaiorQueDezoito += (name) =>
-            ////{
-            ////    SYS.Console.WriteLine($"O {name} é maior de dezoito anos.");
-            ////};
+//            //Func<int, bool> seEhPar = (numero) =>
+//            //{
+//            //    return numero % 2 == 0;
+//            //};
 
-            //p1.IdadeMaiorQueDezoito += ExecutaQuandoForMaior;
+//            //A(seEhPar, 9);
 
-            //p1.Idade = 19;
+//            //bool par = seEhPar(9);
 
-            ////aqui eu nao quero mais oe vento
+//            ////p1.IdadeMaiorQueDezoito += (name) =>
+//            ////{
+//            ////    SYS.Console.WriteLine($"O {name} é maior de dezoito anos.");
+//            ////};
 
-            //p1.IdadeMaiorQueDezoito -= ExecutaQuandoForMaior;
+//            //p1.IdadeMaiorQueDezoito += ExecutaQuandoForMaior;
 
-            //return;
+//            //p1.Idade = 19;
 
-            //var arr = new[] { 1, 2 };
-            //var arr2 = new object[10];
+//            ////aqui eu nao quero mais oe vento
 
-            //ArrayList arrayList = new ArrayList();
-            //arrayList.Add("1");
+//            //p1.IdadeMaiorQueDezoito -= ExecutaQuandoForMaior;
 
+//            //return;
 
-            //var names = new List<string>();
-            //names.Add("heitor");
-            //names.Add("arthur");
-            //names.Add("zelda");
+//            //var arr = new[] { 1, 2 };
+//            //var arr2 = new object[10];
 
-            //// foreach (string nome in nomes) { }
+//            //ArrayList arrayList = new ArrayList();
+//            //arrayList.Add("1");
 
 
-            //var consultaLambda = names
-            //    .Select(x =>
-            //    {
-            //        return x;
-            //    }).ToList();
-            ////.Where(x => true)
-            ////.OrderBy(x => x);
+//            //var names = new List<string>();
+//            //names.Add("heitor");
+//            //names.Add("arthur");
+//            //names.Add("zelda");
 
-            //var consulta = from name
-            //               in names
-            //               select name;
+//            //// foreach (string nome in nomes) { }
 
 
+//            //var consultaLambda = names
+//            //    .Select(x =>
+//            //    {
+//            //        return x;
+//            //    }).ToList();
+//            ////.Where(x => true)
+//            ////.OrderBy(x => x);
 
-            //var resultado = consulta.ToList();
+//            //var consulta = from name
+//            //               in names
+//            //               select name;
 
-            ////var consulta2 = from name
-            ////                in consulta
-            ////                select new
-            ////                {
-            ////                    inicial = name.name
-            ////                };
 
 
-            ////IEnumerable
-            ////IQueryable
+//            //var resultado = consulta.ToList();
 
-            //Queue queue = new Queue();
-            //Queue<int> qQueue = new Queue<int>();
+//            ////var consulta2 = from name
+//            ////                in consulta
+//            ////                select new
+//            ////                {
+//            ////                    inicial = name.name
+//            ////                };
 
-            //qQueue.Enqueue(5);
-            //qQueue.Enqueue(6);
-            //qQueue.Enqueue(10);
 
-            //qQueue.Dequeue();
+//            ////IEnumerable
+//            ////IQueryable
 
-            //Stack<int> stack = new Stack<int>();
+//            //Queue queue = new Queue();
+//            //Queue<int> qQueue = new Queue<int>();
 
-            //stack.TryPop(out int rt);
+//            //qQueue.Enqueue(5);
+//            //qQueue.Enqueue(6);
+//            //qQueue.Enqueue(10);
 
-            //stack.Push(1);
-            //stack.Push(10);
-            //stack.Push(100);
+//            //qQueue.Dequeue();
 
-            //stack.Pop();
+//            //Stack<int> stack = new Stack<int>();
 
-            //Hashtable hashtable = new Hashtable();
+//            //stack.TryPop(out int rt);
 
-            //hashtable.Add(hashtable.Count, "indice 1");
+//            //stack.Push(1);
+//            //stack.Push(10);
+//            //stack.Push(100);
 
-            ////hashtable[0];
+//            //stack.Pop();
 
-            //if (!hashtable.ContainsKey(1))
-            //    hashtable.Add(hashtable.Count, "indice 1");
+//            //Hashtable hashtable = new Hashtable();
 
-            //SortedList<int, string> alunos = new SortedList<int, string>();
+//            //hashtable.Add(hashtable.Count, "indice 1");
 
-            //alunos.Add(99, "heitor");
-            //alunos.Add(9, "caju");
-            //alunos.Add(50, "amora");
-            //alunos.TryAdd(99, "lala");
+//            ////hashtable[0];
 
-            //Dictionary<string, string> dicionario = new Dictionary<string, string>();
-            //KeyValuePair<string, string> keyValuePair;
+//            //if (!hashtable.ContainsKey(1))
+//            //    hashtable.Add(hashtable.Count, "indice 1");
 
+//            //SortedList<int, string> alunos = new SortedList<int, string>();
 
-            //dicionario.Add("00002", "heitor");
-            //dicionario.Add("00001", "heitor");
+//            //alunos.Add(99, "heitor");
+//            //alunos.Add(9, "caju");
+//            //alunos.Add(50, "amora");
+//            //alunos.TryAdd(99, "lala");
 
-            //string a = dicionario["00002"];
+//            //Dictionary<string, string> dicionario = new Dictionary<string, string>();
+//            //KeyValuePair<string, string> keyValuePair;
 
-            //StringDictionary s = new StringDictionary();
 
-            //NameValueCollection ab = new NameValueCollection();
+//            //dicionario.Add("00002", "heitor");
+//            //dicionario.Add("00001", "heitor");
 
+//            //string a = dicionario["00002"];
 
-            //return;
+//            //StringDictionary s = new StringDictionary();
 
-            //Dictionary<string, int> dic = new Dictionary<string, int>();
+//            //NameValueCollection ab = new NameValueCollection();
 
-            //new VendaClasse();
-            //int w = (int)DatabaseOperation.Insert;
-            //DatabaseOperation r = (DatabaseOperation)9;
 
-            //// insert update delete select
-            //// POST - 1 DELETE - 2 PUT - 3 PATCH - 4
+//            //return;
 
-            //OperacaoDb(1);
+//            //Dictionary<string, int> dic = new Dictionary<string, int>();
 
+//            //new VendaClasse();
+//            //int w = (int)DatabaseOperation.Insert;
+//            //DatabaseOperation r = (DatabaseOperation)9;
 
+//            //// insert update delete select
+//            //// POST - 1 DELETE - 2 PUT - 3 PATCH - 4
 
+//            //OperacaoDb(1);
 
-            ////Stopwatch s = new Stopwatch();
-            ////s.Start();
 
-            ////AcessoDb acessoDb = new AcessoDb();
 
-            ////s.Stop();
 
+//            ////Stopwatch s = new Stopwatch();
+//            ////s.Start();
 
+//            ////AcessoDb acessoDb = new AcessoDb();
 
+//            ////s.Stop();
 
-            ////int valor = 10;
 
-            ////acessoDb.Get(ref valor);
 
 
+//            ////int valor = 10;
 
+//            ////acessoDb.Get(ref valor);
 
 
-            ////MetodoSimples();
 
 
-            //int.Parse("olá");
 
+//            ////MetodoSimples();
 
-            //int[] idades = new int[99];
-            //string[] nomes = new string[99];
-            //foreach (var item in idades)
-            //{
 
-            //}
-            //for (int j = 0; j < idades.Length; j++)
-            //{
-            //    string nome = nomes[j];
-            //}
+//            //int.Parse("olá");
 
-            //int i = 0;
-            //// arrays!
 
-            //long[] longArray = new long[10];
+//            //int[] idades = new int[99];
+//            //string[] nomes = new string[99];
+//            //foreach (var item in idades)
+//            //{
 
-            //for (i = 0; i < longArray.Length; i++)
-            //{
-            //    //
-            //}
+//            //}
+//            //for (int j = 0; j < idades.Length; j++)
+//            //{
+//            //    string nome = nomes[j];
+//            //}
 
-            //var h = args[10];
+//            //int i = 0;
+//            //// arrays!
 
+//            //long[] longArray = new long[10];
 
-            //// laços de repetição
+//            //for (i = 0; i < longArray.Length; i++)
+//            //{
+//            //    //
+//            //}
 
-            //// enquanto uma condição for satisfeita!
-            //while (i < 10)
-            //{
-            //    // executa isso aqui!
-            //    i++;
-            //}
-            //for (i = 0; i < 10; i++) { }
-            //do
-            //{
-            //    string arg = args[i];
-            //} while (i < 10);
-            //foreach (int item in Enumerable.Range(0, 10))
-            //{
+//            //var h = args[10];
 
-            //}
 
+//            //// laços de repetição
 
-            //int idade = 18;
+//            //// enquanto uma condição for satisfeita!
+//            //while (i < 10)
+//            //{
+//            //    // executa isso aqui!
+//            //    i++;
+//            //}
+//            //for (i = 0; i < 10; i++) { }
+//            //do
+//            //{
+//            //    string arg = args[i];
+//            //} while (i < 10);
+//            //foreach (int item in Enumerable.Range(0, 10))
+//            //{
 
-            //switch (idade)
-            //{
-            //    case 18:
-            //        // faz alguma coisa
-            //        return;
-            //        break;
-            //    default:
-            //        // caso padrão, caso nenhum condição tenha sido satisfeita!
-            //        break;
-            //}
+//            //}
 
-            //// se uma condição for satisfeita
-            //if (true)
-            //{
-            //    // faz alguma coisa
-            //}
-            //// senão se
-            //else if (true)
-            //{
-            //    // faz alguma coisa
-            //}
-            //// senão
-            //else
-            //{
-            //    // faz alguma coisa
-            //}
 
+//            //int idade = 18;
 
-            ////string numero = "26a";
+//            //switch (idade)
+//            //{
+//            //    case 18:
+//            //        // faz alguma coisa
+//            //        return;
+//            //        break;
+//            //    default:
+//            //        // caso padrão, caso nenhum condição tenha sido satisfeita!
+//            //        break;
+//            //}
 
-            ////var c = Regex.Matches("test1e", "\\d");
+//            //// se uma condição for satisfeita
+//            //if (true)
+//            //{
+//            //    // faz alguma coisa
+//            //}
+//            //// senão se
+//            //else if (true)
+//            //{
+//            //    // faz alguma coisa
+//            //}
+//            //// senão
+//            //else
+//            //{
+//            //    // faz alguma coisa
+//            //}
 
-            ////foreach (Match item in c)
-            ////{
 
-            ////}
+//            ////string numero = "26a";
 
-            ////// int numeroConvertido;
+//            ////var c = Regex.Matches("test1e", "\\d");
 
-            ////string teste = "  \"heitor\"   ";
+//            ////foreach (Match item in c)
+//            ////{
 
-            ////bool funcionou = int.TryParse(numero, out int numeroConvertido);
+//            ////}
 
-            ////// se funcionout == true { } se não { }
+//            ////// int numeroConvertido;
 
-            //////int numeroConvertido = Convert.ToInt32(numero);
+//            ////string teste = "  \"heitor\"   ";
 
-            ////StringBuilder stringBuilder;
+//            ////bool funcionou = int.TryParse(numero, out int numeroConvertido);
 
-            ////stringBuilder = new StringBuilder();
+//            ////// se funcionout == true { } se não { }
 
-            ////stringBuilder.Append("Nome da pessoa");
+//            //////int numeroConvertido = Convert.ToInt32(numero);
 
-            ////stringBuilder.Append("Heitor");
-            ////stringBuilder.Append(true.ToString());
-            ////stringBuilder.Append("Sousa");
+//            ////StringBuilder stringBuilder;
 
-            ////string j = "heitor";
+//            ////stringBuilder = new StringBuilder();
 
-            ////j += "sousa";
+//            ////stringBuilder.Append("Nome da pessoa");
 
-            ////string.Format("{0:d}", DateTime.Now);
+//            ////stringBuilder.Append("Heitor");
+//            ////stringBuilder.Append(true.ToString());
+//            ////stringBuilder.Append("Sousa");
 
-            ////string s = $"{DateTime.Now.ToShortDateString()}";
+//            ////string j = "heitor";
 
-            ////stringBuilder.ToString();
+//            ////j += "sousa";
 
-            ////int numero = 10, k = 9;
-            ////long q;
+//            ////string.Format("{0:d}", DateTime.Now);
 
-            ////q = 99;
+//            ////string s = $"{DateTime.Now.ToShortDateString()}";
 
-            ////var g = "56";
+//            ////stringBuilder.ToString();
 
-            ////dynamic a = 10;
+//            ////int numero = 10, k = 9;
+//            ////long q;
 
-            ////a = "teste";
-        }
+//            ////q = 99;
 
-        string A(string p, TipoPessoa tipoPessoa = TipoPessoa.Marciano)
-        {
-            string retorno;
+//            ////var g = "56";
 
-            switch (tipoPessoa)
-            {
-                case TipoPessoa.Fisica:
-                case TipoPessoa.Juridica:
+//            ////dynamic a = 10;
 
-                    if (tipoPessoa == TipoPessoa.Fisica)
-                    {
+//            ////a = "teste";
+//        }
 
-                    }
+//        string A(string p, TipoPessoa tipoPessoa = TipoPessoa.Marciano)
+//        {
+//            string retorno;
 
-                    break;
-                case TipoPessoa.Alienigena:
-                    break;
-                case TipoPessoa.Marciano:
-                    break;
-                default:
-                    break;
-            }
+//            switch (tipoPessoa)
+//            {
+//                case TipoPessoa.Fisica:
+//                case TipoPessoa.Juridica:
 
-            if (tipoPessoa == TipoPessoa.Fisica)
-            {
+//                    if (tipoPessoa == TipoPessoa.Fisica)
+//                    {
 
-            }
-            else if (tipoPessoa == TipoPessoa.Juridica)
-            {
+//                    }
 
-            }
-            else if (tipoPessoa == TipoPessoa.Alienigena)
-            {
+//                    break;
+//                case TipoPessoa.Alienigena:
+//                    break;
+//                case TipoPessoa.Marciano:
+//                    break;
+//                default:
+//                    break;
+//            }
 
-            }
-            else if (tipoPessoa == TipoPessoa.Marciano)
-            {
+//            if (tipoPessoa == TipoPessoa.Fisica)
+//            {
 
-            }
-            else
-            {
+//            }
+//            else if (tipoPessoa == TipoPessoa.Juridica)
+//            {
 
-            }
+//            }
+//            else if (tipoPessoa == TipoPessoa.Alienigena)
+//            {
 
-            switch (p)
-            {
-                case "teste":
-                    retorno = "teste";
-                    break;
-                default:
-                    retorno = "default";
-                    break;
-            }
+//            }
+//            else if (tipoPessoa == TipoPessoa.Marciano)
+//            {
 
-            return retorno;
-        }
+//            }
+//            else
+//            {
 
-        static string MetodoSimples(string name)
-        {
-            return name.ToUpper();
-        }
+//            }
 
-        static void OperacaoDb(int operacao)
-        {
-            switch (operacao)
-            {
-                case 1:
-                    SYS.Console.WriteLine("insert");
-                    break;
-                case 2:
-                    SYS.Console.WriteLine("update");
-                    break;
-                case 3:
-                    SYS.Console.WriteLine("delete");
-                    break;
-                case 4:
-                    SYS.Console.WriteLine("select");
-                    break;
-            }
-        }
+//            switch (p)
+//            {
+//                case "teste":
+//                    retorno = "teste";
+//                    break;
+//                default:
+//                    retorno = "default";
+//                    break;
+//            }
 
-        static void OperacaoDbEnum(DatabaseOperation databaseOperation)
-        {
-            switch (databaseOperation)
-            {
-                case DatabaseOperation.Insert:
-                    break;
-                case DatabaseOperation.Update:
-                    break;
-                case DatabaseOperation.Delete:
-                    break;
-                case DatabaseOperation.Select:
-                    break;
-            }
-        }
-        static void ExecutaQuandoForMaior(string name)
-        {
-            SYS.Console.WriteLine($"O {name} é maior de dezoito anos.");
-        }
+//            return retorno;
+//        }
 
-        static void A(Func<int, bool> funcao, int numero)
-        {
-            funcao(numero);
-        }
-    }
+//        static string MetodoSimples(string name)
+//        {
+//            return name.ToUpper();
+//        }
 
-    enum TipoPessoa
-    {
-        Fisica,
-        Juridica,
-        Alienigena,
-        Marciano
-    }
+//        static void OperacaoDb(int operacao)
+//        {
+//            switch (operacao)
+//            {
+//                case 1:
+//                    SYS.Console.WriteLine("insert");
+//                    break;
+//                case 2:
+//                    SYS.Console.WriteLine("update");
+//                    break;
+//                case 3:
+//                    SYS.Console.WriteLine("delete");
+//                    break;
+//                case 4:
+//                    SYS.Console.WriteLine("select");
+//                    break;
+//            }
+//        }
 
-    enum DatabaseOperation
-    {
-        Insert = 1,
-        Update,
-        Delete = 7,
-        Select
-    }
-}
+//        static void OperacaoDbEnum(DatabaseOperation databaseOperation)
+//        {
+//            switch (databaseOperation)
+//            {
+//                case DatabaseOperation.Insert:
+//                    break;
+//                case DatabaseOperation.Update:
+//                    break;
+//                case DatabaseOperation.Delete:
+//                    break;
+//                case DatabaseOperation.Select:
+//                    break;
+//            }
+//        }
+//        static void ExecutaQuandoForMaior(string name)
+//        {
+//            SYS.Console.WriteLine($"O {name} é maior de dezoito anos.");
+//        }
 
-namespace App.Data
-{
-    class Pessoa { }
-}
+//        static void A(Func<int, bool> funcao, int numero)
+//        {
+//            funcao(numero);
+//        }
+//    }
+
+//    enum TipoPessoa
+//    {
+//        Fisica,
+//        Juridica,
+//        Alienigena,
+//        Marciano
+//    }
+
+//    enum DatabaseOperation
+//    {
+//        Insert = 1,
+//        Update,
+//        Delete = 7,
+//        Select
+//    }
+//}
+
+//namespace App.Data
+//{
+//    class Pessoa { }
+//}
