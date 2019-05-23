@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using Lab.App.Models;
 using System.Data;
 using System.Data.SqlClient;
+using Lab.App.Data;
 
 namespace Lab.App.UserControls
 {
@@ -27,39 +28,19 @@ namespace Lab.App.UserControls
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void CancelarButton_Click(object sender, RoutedEventArgs e)
+        {
+            DialogResult = false;
+        }
+
+        private void EntrarButton_Click(object sender, RoutedEventArgs e)
         {
             Usuario usuario = new Usuario
             {
                 Login = loginTextBox.Text,
-                Senha = senhaTextBox.Text
+                Senha = senhaPasswordBox.Password
             };
 
-            string connectionString
-                = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=J:\Projects\labapp\Lab.App\App_Data\Lab.mdf;Integrated Security=True";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-
-                string sql
-                    = $"SELECT * FROM Usuario WHERE Login = '{usuario.Login}' AND Senha = '{usuario.Senha}'";
-
-                using (SqlCommand command = new SqlCommand(sql, connection))
-                {
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        bool sucesso = reader.Read();
-                        //while (reader.Read())
-                        //{
-                        //    string login = reader["Login"].ToString();
-                        //    string senha = reader["Senha"].ToString();
-                        //}
-                    }
-                }
-
-                connection.Close();
-            }
 
             if (usuario.Login == "heitor" && usuario.Senha == "123")
             {

@@ -27,41 +27,6 @@ namespace Lab.App.UserControls
             InitializeComponent();
         }
 
-        private void SalvarButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (string.IsNullOrEmpty(nameTextBox.Text) || nascimentoDatePicker.SelectedDate == null)
-            {
-                MessageBox.Show("Dados inválidos.");
-            }
-            else
-            {
-                Aluno aluno = new Aluno
-                {
-                    Nome = nameTextBox.Text,
-                    DataNascimento = nascimentoDatePicker.SelectedDate.Value
-                };
-
-                lista.Add(aluno);
-
-                MessageBox.Show("Dados inseridos com sucesso.");
-
-                LimparFormulario();
-
-                CarregarDados();
-            }
-        }
-
-        private void LimparButton_Click(object sender, RoutedEventArgs e)
-        {
-            LimparFormulario();
-        }
-
-        void LimparFormulario()
-        {
-            nameTextBox.Text = string.Empty;
-            nascimentoDatePicker.SelectedDate = null;
-        }
-
         void CarregarDados()
         {
             alunosDataGrid.ItemsSource = lista;
@@ -71,6 +36,11 @@ namespace Lab.App.UserControls
         private void AlunosDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             
+        }
+
+        private void AlunosDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+
         }
     }
 }

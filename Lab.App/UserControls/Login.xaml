@@ -4,12 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Login" Height="250" Width="200">
+        Title="Login" Height="207.38" Width="272.765" WindowStartupLocation="CenterScreen" WindowStyle="None">
     <Grid>
-        <Label Content="Login:" HorizontalAlignment="Left" Margin="38,44,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-        <TextBox Name="loginTextBox" HorizontalAlignment="Left" Height="23" Margin="38,70,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Senha:" HorizontalAlignment="Left" Margin="38,94,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-        <TextBox  Name="senhaTextBox" HorizontalAlignment="Left" Height="23" Margin="38,120,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <Button Content="Entrar" HorizontalAlignment="Left" Margin="38,148,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <Label Content="Login:" HorizontalAlignment="Left" Margin="55,30,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <TextBox Name="loginTextBox" HorizontalAlignment="Left" Height="23" Margin="55,56,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="160"/>
+        <Label Content="Senha:" HorizontalAlignment="Left" Margin="55,80,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Button Name="entrarButton" Content="Entrar" HorizontalAlignment="Left" Margin="55,134,0,0" VerticalAlignment="Top" Width="80" Click="EntrarButton_Click" Height="27" Background="#FFCCE8FF"/>
+        <Button Name="cancelarButton" Content="Cancelar" HorizontalAlignment="Left" Margin="140,134,0,0" VerticalAlignment="Top" Width="75" Height="27" Background="#FFFFABAB" Click="CancelarButton_Click"/>
+        <PasswordBox  Name="senhaPasswordBox" HorizontalAlignment="Left" Margin="55,106,0,0" VerticalAlignment="Top" Width="160" Height="23"/>
     </Grid>
 </Window>

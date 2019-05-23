@@ -26,7 +26,7 @@ namespace Lab.App
             Login login = new Login();
 
             bool? resultado = login.ShowDialog();
-
+            
             if (!resultado.Value)
             {
                 MessageBox.Show("O app será fechado...");
@@ -45,6 +45,11 @@ namespace Lab.App
         private void NotasButton_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }
