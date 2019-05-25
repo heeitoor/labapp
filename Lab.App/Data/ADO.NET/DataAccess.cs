@@ -14,7 +14,11 @@ namespace Lab.App.Data
         public List<T> Query<T>(string query, Func<DataRow, T> mapping)
         {
             DataTable dataTable = Query(query);
-            return dataTable.Rows.Cast<DataRow>().Select(mapping).ToList();
+            return dataTable
+                .Rows
+                .Cast<DataRow>()
+                .Select(mapping)
+                .ToList();
         }
 
         public DataTable Query(string query)
@@ -28,6 +32,14 @@ namespace Lab.App.Data
             }
 
             return dataTable;
+        }
+
+        public int Execute(string query)
+        {
+            using (SqlCommand command = new SqlCommand(query, GetConnection()))
+            {
+                return command.ExecuteNonQuery();
+            }
         }
 
         private SqlDataReader GetReader(SqlCommand command)
@@ -44,14 +56,6 @@ namespace Lab.App.Data
             connection.Open();
 
             return connection;
-        }
-
-        public int Execute(string query)
-        {
-            using (SqlCommand command = new SqlCommand(query, GetConnection()))
-            {
-                return command.ExecuteNonQuery();
-            }
         }
 
         public void Dispose()

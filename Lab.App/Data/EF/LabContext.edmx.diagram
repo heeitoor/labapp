@@ -4,11 +4,11 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="7e0eba9f328b447b8ec94f0aed01133b" Name="Diagram1">
-        <EntityTypeShape EntityType="LabModel.Aluno" Width="1.5" PointX="0.75" PointY="7.75" />
+      <Diagram DiagramId="7e0eba9f328b447b8ec94f0aed01133b" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="LabModel.Aluno" Width="1.5" PointX="0.75" PointY="1.5" />
         <EntityTypeShape EntityType="LabModel.Nota" Width="1.5" PointX="3" PointY="1" />
         <EntityTypeShape EntityType="LabModel.Professor" Width="1.5" PointX="0.75" PointY="5.125" />
-        <EntityTypeShape EntityType="LabModel.Turma" Width="1.5" PointX="0.75" PointY="1.5" />
+        <EntityTypeShape EntityType="LabModel.Turma" Width="1.5" PointX="6" PointY="2.75" />
         <AssociationConnector Association="LabModel.fk_aluno" />
         <AssociationConnector Association="LabModel.fk_prof" />
         <AssociationConnector Association="LabModel.fk_turma" />

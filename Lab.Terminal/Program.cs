@@ -1,133 +1,192 @@
 ﻿using System;
-using System.IO;
+using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Runtime.Serialization.Json;
-using System.Threading;
+using System.Text;
 using System.Threading.Tasks;
-using System.Xml.Serialization;
+using Lab.Extensions.Object;
+using Lab.Terminal;
+
+namespace Lab.Extensions.Object
+{
+    public class A
+    {
+
+    }
+
+    public static class Extensions
+    {
+        public static int ToInteiro(this object obj)
+        {
+            return (int)obj;
+        }
+
+        public static string ToJson(this object obj)
+        {
+            return string.Empty;
+        }
+
+        public static string ToCPF(this object obj)
+        {
+            return string.Empty;
+        }
+    }
+}
 
 namespace Lab.Terminal
 {
+    interface IDataCadastro
+    {
+        DateTime DataCadastro { get; set; }
+    }
+
+    interface IPessoa : IDataCadastro
+    {
+        IIR Declarador { get; set; }
+
+        void DeclaradorDeIR(IDadosIR dados);
+    }
+
+    interface IIR { void Declarar(IDadosIR dados); }
+
+    class DeclaradorPF : IIR
+    {
+        public void Declarar(IDadosIR dados)
+        {
+            Console.WriteLine("Declara o IR do PF.");
+        }
+    }
+
+    interface IDadosIR { }
+
+    abstract class Pessoa : IPessoa
+    {
+        public DateTime DataCadastro { get; set; }
+        public IIR Declarador { get; set; }
+        public string Nome { get; set; }
+
+        public Pessoa() { }
+
+        public Pessoa(IIR declarador)
+        {
+            Declarador = declarador;
+        }
+
+        public void DeclaradorDeIR(IDadosIR dados)
+        {
+            if (Declarador != null)
+                throw new Exception("Declarador não instanciado...");
+
+            MetodoAbstrato();
+
+            Declarador.Declarar(dados);
+        }
+
+        public abstract void MetodoAbstrato();
+
+        public virtual void P(string nome)
+        {
+            Nome = nome;
+        }
+
+        protected void TesteProtected()
+        {
+            TestePrivate();
+        }
+
+        private void TestePrivate() { }
+    }
+
+    class AppException : Exception
+    {
+        public DateTime HoraQueAconteceu => DateTime.Now;
+    }
+
+    class PessoaFisica : Pessoa
+    {
+        public PessoaFisica(DeclaradorPF declaradorPF) : base(declaradorPF)
+        {
+
+        }
+
+        public override void MetodoAbstrato()
+        {
+        }
+
+        public new void DeclaradorDeIR(IDadosIR dados)
+        {
+            base.DeclaradorDeIR(dados);
+        }
+
+        public sealed override void P(string nome)
+        {
+            base.P(nome);
+
+            Nome += DateTime.Now.ToShortTimeString();
+        }
+    }
+
+    sealed class PessoaJuridica : Pessoa
+    {
+        public override void MetodoAbstrato()
+        {
+            throw new NotImplementedException();
+        }
+
+        void K(PessoaJuridica pj)
+        {
+        }
+    }
+
     class Program
     {
-        async static void SimpleTask()
+        // async static Task Main
+        public static void Main(string[] args)
         {
-            Task t1 = new Task(() =>
-            {
-                Thread.Sleep(1000);
-                Console.WriteLine("ran t1");
-            });
-
-            t1.Start();
-            t1.Wait();
-        }
-
-        static Task<string> GetSomethingTask()
-        {
-            return Task.Run<string>(() =>
-           {
-               return "task";
-           });
-        }
-
-        static void Token()
-        {
-            CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
-            CancellationToken cancellationToken = cancellationTokenSource.Token;
-
-            Task a = new Task(() =>
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    Thread.Sleep(500);
-                    Console.WriteLine("Task A " + i);
-
-                    if (cancellationToken.IsCancellationRequested)
-                    {
-                        cancellationToken.ThrowIfCancellationRequested();
-                    }
-                }
-
-            }, cancellationToken);
-
-            Task b = new Task(() =>
-            {
-                Thread.Sleep(2000);
-                cancellationTokenSource.Cancel();
-            });
-
-            a.Start();
-            b.Start();
-
-            Task.WaitAll(a, b);
-        }
-
-        static void ParallelForeach()
-        {
-
-            Parallel.ForEach(Enumerable.Range(1, 99), (item) =>
-            {
-                Console.WriteLine(item);
-            });
-        }
-
-        static void PLinq()
-        {
-
-            Enumerable.Range(1, 99).Select(x =>
-            {
-                Console.WriteLine(x);
-                Thread.Sleep(100);
-                return 0;
-            }).AsParallel().ToList();
-        }
-
-        async static void TaskContinue()
-        {
-
-            await Task.Run(() =>
-            {
-                Console.WriteLine("task 1");
-            }).ContinueWith((tr) =>
-            {
-                Console.WriteLine("task 2");
-            });
-        }
-
-        async static void tc()
-        {
-            await Task.Run<string>(() =>
-            {
-                return "result from task 1";
-            }).ContinueWith((tr) =>
-            {
-                Console.WriteLine("recebido de task1: " + tr.Result);
-            });
-        }
-
-        async static Task Main(string[] args)
-        {
-            //HttpClient a = new HttpClient();
+            //PessoaJuridica pj = new PessoaJuridica();
+            PessoaFisica pf = new PessoaFisica(new DeclaradorPF());
             
-            //HttpWebRequest httpWebRequest = WebRequest.CreateHttp("https://yts.am/api/v2/list_movies.json");
-            
-            //WebResponse webResponse = q.GetResponse();
-            
-            //StreamReader sr = new StreamReader(webResponse.GetResponseStream());
+            object obj = 10;
 
-            //Console.WriteLine(sr.ReadToEnd());
+            int k = (int)obj;
 
-            //WebClient wc = new WebClient();
+            obj.ToInteiro();
 
-            //var k = wc.DownloadString("https://yts.am/api/v2/list_movies.json");
+            //new Pessoa();
+            //new PessoaFisica();
 
-            ////Console.WriteLine(k);
+            //IIR declaradorInstancia;
 
-            //Console.WriteLine("end");
+            pf.DeclaradorDeIR(null);
         }
+    }
+
+    class Beverage
+    {
+        public Beverage()
+        {
+            B = "Passou por Beverage.";
+        }
+
+        public string B { get; set; }
+    }
+
+    class Coffee : Beverage
+    {
+        public Coffee() : base()
+        {
+            C = "Passou por Coffee.";
+        }
+
+        public string C { get; set; }
+    }
+
+    class Expresso : Coffee
+    {
+        public Expresso() : base()
+        {
+            E = "Passou por Expresso";
+        }
+
+        public string E { get; set; }
     }
 }

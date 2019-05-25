@@ -9,11 +9,11 @@ namespace Lab.App.Helpers
 {
     public class SerializationHelper
     {
-        public static void Serialize<T>(T obj)
+        public static void Serialize<T>(T obj, string path)
         {
             try
             {
-                using (FileStream fileStream = new FileStream(@"E:\teste.dat", FileMode.Create, FileAccess.Write))
+                using (FileStream fileStream = new FileStream(path, FileMode.Create, FileAccess.Write))
                 {
                     new BinaryFormatter().Serialize(fileStream, obj);
                     fileStream.Close();
@@ -51,11 +51,16 @@ namespace Lab.App.Helpers
 
         public ClassTeste() { }
 
-        public ClassTeste(SerializationInfo info, StreamingContext context) { Name = info.GetString("Name"); }
+        public ClassTeste(SerializationInfo info, StreamingContext context)
+        {
+            Name = info.GetString("Name");
+        }
 
-        public void GetObjectData(SerializationInfo info, StreamingContext context) { info.AddValue("Name", Name); }
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            info.AddValue("Name", Name);
+        }
     }
-
 
     public class SimpleIniFormatter : IFormatter
     {

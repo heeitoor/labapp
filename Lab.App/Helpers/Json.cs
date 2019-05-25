@@ -11,9 +11,9 @@ namespace Lab.App.Helpers
             return JsonConvert.SerializeObject(o);
         }
 
-        public static object FromJson(string json)
+        public static T FromJson<T>(string json)
         {
-            return JsonConvert.DeserializeObject(json);
+            return JsonConvert.DeserializeObject<T>(json);
         }
 
         public static void Serialize(object o)

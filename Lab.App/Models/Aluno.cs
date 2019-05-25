@@ -1,16 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Lab.App.Models
 {
-    class Aluno
+    [Serializable]
+    public class AlunoFiltro
     {
-        private string A { get; set; }
-
         public string Nome { get; set; }
+    }
+
+    [Serializable]
+    public class Aluno : AlunoFiltro
+    {
+        [XmlElement("Cod")]
+        public int Id { get; set; }
 
         public DateTime DataNascimento { get; set; }
     }

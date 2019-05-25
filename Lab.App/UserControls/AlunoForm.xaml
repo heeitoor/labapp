@@ -5,15 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lab.App.UserControls"
         mc:Ignorable="d"
-        Title="AlunoForm" Height="450" Width="334.096">
+        Title="Formulário de Aluno" Height="254" Width="339.096">
     <Grid>
-        <Label Content="Nome:" HorizontalAlignment="Left" Margin="58,23,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.158,0.154"/>
-        <TextBox x:Name="nameTextBox" Text="" HorizontalAlignment="Left" Height="23" Margin="58,49,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211"/>
-        <DatePicker x:Name="nascimentoDatePicker" HorizontalAlignment="Left" Margin="58,103,0,0" VerticalAlignment="Top" Width="211"/>
-        <Label Content="Data de nascimento:" HorizontalAlignment="Left" Margin="58,77,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.158,0.154"/>
+        <Label Content="Nome:" HorizontalAlignment="Left" Margin="66,42,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.158,0.154"/>
+        <TextBox x:Name="nameTextBox" Text="" HorizontalAlignment="Left" Height="23" Margin="66,68,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211"/>
+        <DatePicker x:Name="nascimentoDatePicker" HorizontalAlignment="Left" Margin="66,122,0,0" VerticalAlignment="Top" Width="211"/>
+        <Label Content="Data de nascimento:" HorizontalAlignment="Left" Margin="66,96,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.158,0.154"/>
 
-        <Button x:Name="salvarButton" Content="Salvar" HorizontalAlignment="Left" Margin="88,132,0,0" VerticalAlignment="Top" Width="64" Click="SalvarButton_Click" />
-        <Button x:Name="limparButton" Content="Limpar" HorizontalAlignment="Left" Margin="157,132,0,0" VerticalAlignment="Top" Width="64" Click="LimparButton_Click"/>
+        <Button x:Name="salvarButton" Content="Salvar" HorizontalAlignment="Left" Margin="101,151,0,0" VerticalAlignment="Top" Width="64" Click="SalvarButton_Click" />
+        <Button x:Name="cancelarButton" Content="Cancelar" HorizontalAlignment="Left" Margin="170,151,0,0" VerticalAlignment="Top" Width="64" Click="LimparButton_Click"/>
 
     </Grid>
 </Window>

@@ -39,13 +39,9 @@ namespace Lab.App.UserControls
                     DataNascimento = nascimentoDatePicker.SelectedDate.Value
                 };
 
-                //lista.Add(aluno);
-
                 MessageBox.Show("Dados inseridos com sucesso.");
 
                 LimparFormulario();
-
-                //CarregarDados();
             }
         }
 

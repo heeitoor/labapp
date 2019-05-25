@@ -4,9 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="AlunoManager" Height="303.925" Width="469.64" WindowStyle="ToolWindow" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Alunos" Height="330.925" Width="480.64" WindowStyle="ToolWindow" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
-        <DataGrid Name="alunosDataGrid" HorizontalAlignment="Left" Height="189"  VerticalAlignment="Top"  AutoGenerateColumns="False" SelectionChanged="AlunosDataGrid_SelectionChanged" Margin="10,77,0,0" Width="444" MouseDoubleClick="AlunosDataGrid_MouseDoubleClick">
+        <DataGrid Name="alunosDataGrid" HorizontalAlignment="Left" Height="197"  VerticalAlignment="Top"  AutoGenerateColumns="False" SelectionChanged="AlunosDataGrid_SelectionChanged" Margin="10,69,0,0" Width="444" MouseDoubleClick="AlunosDataGrid_MouseDoubleClick" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Nome}" ClipboardContentBinding="{x:Null}" Header="Nome"/>
                 <DataGridTextColumn Binding="{Binding DataNascimento, StringFormat=dd/MM/yyyy}" ClipboardContentBinding="{x:Null}" Header="Data de Nascimento"/>
@@ -19,13 +19,12 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <GroupBox Header="Filtro" HorizontalAlignment="Left" Height="62" Margin="10,10,0,0" VerticalAlignment="Top" Width="444">
-            <Label Content="Label" HorizontalAlignment="Left" Margin="38,0,0,0" VerticalAlignment="Top" RenderTransformOrigin="-3.41,3.139"/>
-
-
-
-        </GroupBox>
-
-
+        <Label Content="Nome:" HorizontalAlignment="Left" Margin="102,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="-3.41,3.139"/>
+        <TextBox Name="nomeTextBox" HorizontalAlignment="Left" Height="23" Margin="152,13,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="168" KeyUp="NomeTextBox_KeyUp"/>
+        <Button Name="filtrarButton" Content="Filtrar" HorizontalAlignment="Left" Margin="152,41,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="FiltrarButton_Click"/>
+        <Button Name="novoButton" Content="Novo" HorizontalAlignment="Left" Margin="379,41,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="NovoButton_Click"/>
+        <Button Name="xmlButton" Content="XML" HorizontalAlignment="Left" Margin="10,270,0,0" VerticalAlignment="Top" Width="75" Click="XmlButton_Click" />
+        <Button Name="jsonButton" Content="JSON" HorizontalAlignment="Left" Margin="90,270,0,0" VerticalAlignment="Top" Width="75" Click="JsonButton_Click"/>
+        <Button Name="binaryButton" Content="Binário" HorizontalAlignment="Left" Margin="170,270,0,0" VerticalAlignment="Top" Width="75" Click="BinaryButton_Click"/>
     </Grid>
 </Window>
