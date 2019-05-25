@@ -23,7 +23,6 @@ namespace Lab.App.UserControls
         public AlunoForm()
         {
             InitializeComponent();
-            
         }
 
         private void SalvarButton_Click(object sender, RoutedEventArgs e)

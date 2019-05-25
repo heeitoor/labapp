@@ -26,6 +26,15 @@ namespace Lab.App.UserControls
         public Login()
         {
             InitializeComponent();
+            
+            cancelarButton.Dispatcher.BeginInvoke(new Action(() =>
+            {
+                while (true)
+                {
+                    cancelarButton.Content = DateTime.Now.ToString("mm:ss");
+                    System.Threading.Thread.Sleep(1000);
+                }
+            }));
         }
 
         private void CancelarButton_Click(object sender, RoutedEventArgs e)

@@ -23,15 +23,16 @@ namespace Lab.App
     {
         public MainWindow()
         {
-            Login login = new Login();
 
-            bool? resultado = login.ShowDialog();
-            
-            if (!resultado.Value)
-            {
-                MessageBox.Show("O app será fechado...");
-                Environment.Exit(0);
-            }
+            //Login login = new Login();
+
+            //bool? resultado = login.ShowDialog();
+
+            //if (!resultado.Value)
+            //{
+            //    MessageBox.Show("O app será fechado...");
+            //    Environment.Exit(0);
+            //}
 
             InitializeComponent();
         }
@@ -49,7 +50,7 @@ namespace Lab.App
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            
+
         }
     }
 }

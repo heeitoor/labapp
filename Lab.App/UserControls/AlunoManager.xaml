@@ -6,20 +6,24 @@
         mc:Ignorable="d"
         Title="AlunoManager" Height="303.925" Width="469.64" WindowStyle="ToolWindow" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
-        <GroupBox Header="Filtro" HorizontalAlignment="Left" Height="99" Margin="55,142,0,0" VerticalAlignment="Top" Width="309">
-            <DataGrid Name="alunosDataGrid" HorizontalAlignment="Left" Height="81"  VerticalAlignment="Top"  AutoGenerateColumns="False" SelectionChanged="AlunosDataGrid_SelectionChanged" Margin="0,0,0,-4" Width="285" MouseDoubleClick="AlunosDataGrid_MouseDoubleClick">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding Nome}" ClipboardContentBinding="{x:Null}" Header="Nome"/>
-                    <DataGridTextColumn Binding="{Binding DataNascimento, StringFormat=dd/MM/yyyy}" ClipboardContentBinding="{x:Null}" Header="Data de Nascimento"/>
-                    <DataGridTemplateColumn ClipboardContentBinding="{x:Null}">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                </DataGrid.Columns>
-            </DataGrid>
+        <DataGrid Name="alunosDataGrid" HorizontalAlignment="Left" Height="189"  VerticalAlignment="Top"  AutoGenerateColumns="False" SelectionChanged="AlunosDataGrid_SelectionChanged" Margin="10,77,0,0" Width="444" MouseDoubleClick="AlunosDataGrid_MouseDoubleClick">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Nome}" ClipboardContentBinding="{x:Null}" Header="Nome"/>
+                <DataGridTextColumn Binding="{Binding DataNascimento, StringFormat=dd/MM/yyyy}" ClipboardContentBinding="{x:Null}" Header="Data de Nascimento"/>
+                <DataGridTemplateColumn ClipboardContentBinding="{x:Null}">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Label />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <GroupBox Header="Filtro" HorizontalAlignment="Left" Height="62" Margin="10,10,0,0" VerticalAlignment="Top" Width="444">
+            <Label Content="Label" HorizontalAlignment="Left" Margin="38,0,0,0" VerticalAlignment="Top" RenderTransformOrigin="-3.41,3.139"/>
+
+
+
         </GroupBox>
 
 
