@@ -1,0 +1,20 @@
+﻿<Window x:Class="Lab.App.Windows.Aluno.Form"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lab.App.Windows.Aluno"
+        mc:Ignorable="d"
+        Title="Form" Height="154.366" Width="424.844">
+    <Grid>
+
+        <Label Content="Nome:" HorizontalAlignment="Left" Margin="100,25,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.158,0.154"/>
+        <TextBox x:Name="nameTextBox" Text="" HorizontalAlignment="Left" Height="23" Margin="156,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211"/>
+        <DatePicker x:Name="nascimentoDatePicker" HorizontalAlignment="Left" Margin="156,53,0,0" VerticalAlignment="Top" Width="211"/>
+        <Label Content="Data de nascimento:" HorizontalAlignment="Left" Margin="27,52,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.158,0.154"/>
+
+        <Button x:Name="salvarButton" Content="Salvar" HorizontalAlignment="Left" Margin="156,82,0,0" VerticalAlignment="Top" Width="97" Click="SalvarButton_Click" />
+        <Button x:Name="cancelarButton" Content="Cancelar" HorizontalAlignment="Left" Margin="258,82,0,0" VerticalAlignment="Top" Width="64" Click="LimparButton_Click"/>
+
+    </Grid>
+</Window>

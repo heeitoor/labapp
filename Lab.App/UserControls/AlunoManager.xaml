@@ -4,27 +4,22 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Alunos" Height="330.925" Width="480.64" WindowStyle="ToolWindow" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Alunos" Height="348.592" Width="663.64" WindowStyle="ToolWindow" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
-        <DataGrid Name="alunosDataGrid" HorizontalAlignment="Left" Height="197"  VerticalAlignment="Top"  AutoGenerateColumns="False" SelectionChanged="AlunosDataGrid_SelectionChanged" Margin="10,69,0,0" Width="444" MouseDoubleClick="AlunosDataGrid_MouseDoubleClick" IsReadOnly="True">
+        <DataGrid Name="alunosDataGrid" ColumnWidth="*" HorizontalAlignment="Left" Height="81"  VerticalAlignment="Top" SelectionChanged="AlunosDataGrid_SelectionChanged" Margin="10,69,0,0" Width="444" MouseDoubleClick="AlunosDataGrid_MouseDoubleClick" IsReadOnly="True" AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Nome}" ClipboardContentBinding="{x:Null}" Header="Nome"/>
-                <DataGridTextColumn Binding="{Binding DataNascimento, StringFormat=dd/MM/yyyy}" ClipboardContentBinding="{x:Null}" Header="Data de Nascimento"/>
-                <DataGridTemplateColumn ClipboardContentBinding="{x:Null}">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Label />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
+                <DataGridTextColumn  Binding="{Binding Nome}" ClipboardContentBinding="{x:Null}" Header="Nome"/>
+                <DataGridTextColumn Width="150" Binding="{Binding DataNascimento, StringFormat=dd/MM/yyyy}" ClipboardContentBinding="{x:Null}" Header="Data de Nascimento"/>
             </DataGrid.Columns>
         </DataGrid>
         <Label Content="Nome:" HorizontalAlignment="Left" Margin="102,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="-3.41,3.139"/>
         <TextBox Name="nomeTextBox" HorizontalAlignment="Left" Height="23" Margin="152,13,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="168" KeyUp="NomeTextBox_KeyUp"/>
         <Button Name="filtrarButton" Content="Filtrar" HorizontalAlignment="Left" Margin="152,41,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="FiltrarButton_Click"/>
         <Button Name="novoButton" Content="Novo" HorizontalAlignment="Left" Margin="379,41,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="NovoButton_Click"/>
-        <Button Name="xmlButton" Content="XML" HorizontalAlignment="Left" Margin="10,270,0,0" VerticalAlignment="Top" Width="75" Click="XmlButton_Click" />
-        <Button Name="jsonButton" Content="JSON" HorizontalAlignment="Left" Margin="90,270,0,0" VerticalAlignment="Top" Width="75" Click="JsonButton_Click"/>
-        <Button Name="binaryButton" Content="Binário" HorizontalAlignment="Left" Margin="170,270,0,0" VerticalAlignment="Top" Width="75" Click="BinaryButton_Click"/>
+        <Button Name="saveButton" Content="Salvar" HorizontalAlignment="Left" Margin="172,209,0,0" VerticalAlignment="Top" Width="75" Click="saveButton_Click" />
+        <RadioButton Name="xmlRadioButton" GroupName="saveType" Content="XML" HorizontalAlignment="Left" Margin="10,212,0,0" VerticalAlignment="Top"/>
+        <RadioButton Name="jsonRadioButton" GroupName="saveType" Content="JSON" HorizontalAlignment="Left" Margin="58,212,0,0" VerticalAlignment="Top"/>
+        <RadioButton Name="binarioRadioButton" GroupName="saveType" Content="Binário" HorizontalAlignment="Left" Margin="111,212,0,0" VerticalAlignment="Top"/>
+
     </Grid>
 </Window>

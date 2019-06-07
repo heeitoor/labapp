@@ -27,9 +27,9 @@ namespace Lab.App
     {
         public MainWindow()
         {
-            
 
-            
+
+
 
 
             //HELP.IOHelper.Escrever(@"c:\escrita.txt", "valor da escrita de texto");
@@ -74,7 +74,7 @@ namespace Lab.App
             //    Name = "AppLab"
             //}, @"e:\classTeste.ttt");
 
-//            var p = HELP.SerializationHelper.DeSerialize<HELP.ClassTeste>(@"e:\classTeste.ttt");
+            //            var p = HELP.SerializationHelper.DeSerialize<HELP.ClassTeste>(@"e:\classTeste.ttt");
 
             //HELP.SerializationHelper.Serialize(new Aluno
             //{
@@ -128,9 +128,17 @@ namespace Lab.App
             alunoManager.ShowDialog();
         }
 
-        private void NotasButton_Click(object sender, RoutedEventArgs e)
+        private async void NotasButton_Click(object sender, RoutedEventArgs e)
         {
+            await Task.Run(() =>
+            {
+                for (int i = 0; i < 999999999; i++)
+                {
 
+                }
+            });
+
+            MessageBox.Show("teste");
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)

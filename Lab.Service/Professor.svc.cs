@@ -1,17 +1,29 @@
-﻿using Lab.Service.Contracts;
-using Lab.Service.Models;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Lab.Service.Contracts;
 
 namespace Lab.Service
 {
     public class Professor : IProfessor
     {
-        public ProfessorModel Get()
+        public bool Add(Models.Professor professor)
         {
-            return new ProfessorModel
-            {
-                Id = 1,
-                Nome = "Heitor"
-            };
+            throw new System.NotImplementedException();
+        }
+
+        public bool Delete(Models.Professor professor)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public IEnumerable<Models.Professor> Get()
+        {
+            return Enumerable.Empty<Models.Professor>();
+        }
+
+        public bool Update(Models.Professor professor)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

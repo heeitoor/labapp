@@ -1,0 +1,28 @@
+﻿<Window x:Class="Lab.App.Windows.Aluno.Grid"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lab.App.Windows.Aluno"
+        mc:Ignorable="d"
+        Title="Grid" Height="317" Width="475">
+    <Grid>
+        <Label Content="Nome:" HorizontalAlignment="Left" Margin="77,25,0,0" VerticalAlignment="Top" RenderTransformOrigin="-3.41,3.139"/>
+        <TextBox Name="nomeTextBox" HorizontalAlignment="Left" Height="23" Margin="127,28,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="168" KeyUp="NomeTextBox_KeyUp"/>
+        <Button Name="filtrarButton" Content="Filtrar" HorizontalAlignment="Left" Margin="300,28,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="FiltrarButton_Click"/>
+        <Button Name="novoButton" Content="Novo" HorizontalAlignment="Left" Margin="10,243,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="NovoButton_Click"/>
+        <Button Name="saveButton" Content="Salvar" HorizontalAlignment="Left" Margin="380,246,0,0" VerticalAlignment="Top" Width="75" Click="saveButton_Click" />
+        <RadioButton Name="xmlRadioButton" GroupName="saveType" Content="XML" HorizontalAlignment="Left" Margin="218,249,0,0" VerticalAlignment="Top"/>
+        <RadioButton Name="jsonRadioButton" GroupName="saveType" Content="JSON" HorizontalAlignment="Left" Margin="266,249,0,0" VerticalAlignment="Top"/>
+        <RadioButton Name="binarioRadioButton" GroupName="saveType" Content="Binário" HorizontalAlignment="Left" Margin="319,249,0,0" VerticalAlignment="Top"/>
+
+
+        <DataGrid Name="alunosDataGrid" ColumnWidth="*" HorizontalAlignment="Left" Height="172"  VerticalAlignment="Top" SelectionChanged="AlunosDataGrid_SelectionChanged" Margin="10,66,0,0" Width="444" MouseDoubleClick="AlunosDataGrid_MouseDoubleClick" IsReadOnly="True" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn  Binding="{Binding Nome}" ClipboardContentBinding="{x:Null}" Header="Nome"/>
+                <DataGridTextColumn Width="150" Binding="{Binding DataNascimento, StringFormat=dd/MM/yyyy}" ClipboardContentBinding="{x:Null}" Header="Data de Nascimento"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</Window>

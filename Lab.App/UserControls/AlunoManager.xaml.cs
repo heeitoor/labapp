@@ -23,14 +23,20 @@ namespace Lab.App.UserControls
     /// </summary>
     public partial class AlunoManager : Window
     {
-        private Lazy<AlunoBusiness> Business = new Lazy<AlunoBusiness>(() => new AlunoBusiness());
-        private List<Aluno> alunos = null;
-
         public AlunoManager()
         {
             InitializeComponent();
             CarregarDados(new AlunoFiltro());
         }
+
+        #region Campos e Propriedades
+
+        private Lazy<AlunoBusiness> Business = new Lazy<AlunoBusiness>(() => new AlunoBusiness());
+        private List<Aluno> alunos = null;
+
+        #endregion
+
+        #region Eventos
 
         private void NomeTextBox_KeyUp(object sender, KeyEventArgs e)
         {
@@ -51,23 +57,6 @@ namespace Lab.App.UserControls
             });
         }
 
-        void CarregarDados(AlunoFiltro filtro)
-        {
-            //alunosDataGrid.ItemsSource = alunos = Business.Value.Get(filtro);
-
-            Lab.App.Data.EF.LabEF context = new Data.EF.LabEF();
-            
-            alunosDataGrid.ItemsSource = alunos =
-                context.Aluno.Select(x => new Aluno
-                {
-                    Id = x.Id,
-                    Nome = x.Nome,
-                    DataNascimento = x.Nascimento
-                }).ToList();
-
-            alunosDataGrid.Items.Refresh();
-        }
-
         private void NovoButton_Click(object sender, RoutedEventArgs e)
         {
             AlunoForm alunoForm = new AlunoForm();
@@ -79,30 +68,13 @@ namespace Lab.App.UserControls
 
         }
 
-        private void XmlButton_Click(object sender, RoutedEventArgs e)
+        private void saveButton_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                string fileName = DateTime.Now.Ticks.ToString();
+            string fileName = DateTime.Now.Ticks.ToString();
 
-                string xml = XmlHelper.ToXml(alunos);
+            string xml = XmlHelper.ToXml(alunos);
 
-                IOHelper.Escrever($@"e:\{fileName}.xml", xml);
-            }
-            catch (Exception x)
-            {
-
-            }
-        }
-
-        private void JsonButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void BinaryButton_Click(object sender, RoutedEventArgs e)
-        {
-
+            IOHelper.Escrever($@"e:\{fileName}.xml", xml);
         }
 
         object t = null;
@@ -115,5 +87,28 @@ namespace Lab.App.UserControls
         {
 
         }
+
+        #endregion
+
+        #region Métodos
+
+        void CarregarDados(AlunoFiltro filtro)
+        {
+            alunosDataGrid.ItemsSource = alunos = Business.Value.Get(filtro);
+
+            //Lab.App.Data.EF.LabEF context = new Data.EF.LabEF();
+
+            //alunosDataGrid.ItemsSource = alunos =
+            //    context.Aluno.Select(x => new Aluno
+            //    {
+            //        Id = x.Id,
+            //        Nome = x.Nome,
+            //        DataNascimento = x.Nascimento
+            //    }).ToList();
+
+            //alunosDataGrid.Items.Refresh();
+        }
+
+        #endregion
     }
 }
