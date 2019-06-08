@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lab"
         mc:Ignorable="d"
-        Title="MainWindow" Height="361" Width="412" WindowStartupLocation="CenterScreen">
+        Title="Lab App" Height="404" Width="525" WindowStartupLocation="CenterScreen" WindowStyle="ToolWindow">
     <Grid>
-        <Button Name="alunoButton" Content="Aluno" HorizontalAlignment="Left" Margin="10,11,0,0" VerticalAlignment="Top" Width="168" Click="AlunoButton_Click" Height="112" />
-        <Button Name="notasButton" Content="Notas" HorizontalAlignment="Left" Margin="207,11,0,0" VerticalAlignment="Top" Width="168" Click="NotasButton_Click" Height="112"/>
+        <Button Name="alunoButton" Content="Aluno" HorizontalAlignment="Left" Margin="79,117,0,0" VerticalAlignment="Top" Width="168" Click="AlunoButton_Click" Height="112" />
+        <Button Name="notasButton" Content="Notas" HorizontalAlignment="Left" Margin="297,117,0,0" VerticalAlignment="Top" Width="168" Click="NotasButton_Click" Height="112" RenderTransformOrigin="0.821,1.83"/>
     </Grid>
 </Window>

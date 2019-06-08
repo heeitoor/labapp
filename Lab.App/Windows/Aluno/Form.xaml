@@ -5,16 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lab.App.Windows.Aluno"
         mc:Ignorable="d"
-        Title="Form" Height="154.366" Width="424.844">
+        Title="Formulário de Aluno" Height="232.366" Width="484.844" WindowStartupLocation="CenterScreen" WindowStyle="ToolWindow">
     <Grid>
 
-        <Label Content="Nome:" HorizontalAlignment="Left" Margin="100,25,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.158,0.154"/>
-        <TextBox x:Name="nameTextBox" Text="" HorizontalAlignment="Left" Height="23" Margin="156,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211"/>
-        <DatePicker x:Name="nascimentoDatePicker" HorizontalAlignment="Left" Margin="156,53,0,0" VerticalAlignment="Top" Width="211"/>
-        <Label Content="Data de nascimento:" HorizontalAlignment="Left" Margin="27,52,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.158,0.154"/>
+        <Label Content="Nome:" HorizontalAlignment="Left" Margin="138,63,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.158,0.154"/>
+        <TextBox x:Name="nameTextBox" Text="" HorizontalAlignment="Left" Height="23" Margin="194,63,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211"/>
+        <DatePicker x:Name="nascimentoDatePicker" HorizontalAlignment="Left" Margin="194,91,0,0" VerticalAlignment="Top" Width="211"/>
+        <Label Content="Data de nascimento:" HorizontalAlignment="Left" Margin="65,90,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.158,0.154"/>
 
-        <Button x:Name="salvarButton" Content="Salvar" HorizontalAlignment="Left" Margin="156,82,0,0" VerticalAlignment="Top" Width="97" Click="SalvarButton_Click" />
-        <Button x:Name="cancelarButton" Content="Cancelar" HorizontalAlignment="Left" Margin="258,82,0,0" VerticalAlignment="Top" Width="64" Click="LimparButton_Click"/>
+        <Button x:Name="salvarButton" Content="Salvar" HorizontalAlignment="Left" Margin="194,120,0,0" VerticalAlignment="Top" Width="97" Click="SalvarButton_Click" />
+        <Button x:Name="cancelarButton" Content="Cancelar" HorizontalAlignment="Left" Margin="296,120,0,0" VerticalAlignment="Top" Width="64" Click="LimparButton_Click"/>
 
     </Grid>
 </Window>

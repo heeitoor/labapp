@@ -42,9 +42,10 @@ namespace Lab.App.Windows.Nota
             notasDataGrid.Items.Refresh();
         }
 
-        private void NotasDataGrid_BeginningEdit(object sender, DataGridBeginningEditEventArgs e)
+        private void NotasDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            e.Cancel = true;
+            Form f = new Form();
+            f.ShowDialog();
         }
     }
 }

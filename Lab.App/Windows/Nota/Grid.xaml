@@ -5,16 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lab.App.Windows.Nota"
         mc:Ignorable="d"
-        Title="Form" Height="339.605" Width="567.983">
+        Title="Notas" Height="337.983" Width="569.128" WindowStartupLocation="CenterScreen" WindowStyle="ToolWindow">
     <Grid>
-        <DataGrid Name="notasDataGrid" BeginningEdit="NotasDataGrid_BeginningEdit" ColumnWidth="*" HorizontalAlignment="Left" Height="225" Margin="10,65,0,0" VerticalAlignment="Top" Width="531" IsReadOnly="True">
+        <DataGrid Name="notasDataGrid" ColumnWidth="*" MouseDoubleClick="NotasDataGrid_MouseDoubleClick" HorizontalAlignment="Left" Height="249" Margin="10,41,0,0" VerticalAlignment="Top" Width="531" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Width="200" Binding="{Binding Aluno}" CanUserSort="False" CanUserReorder="False" Header="Aluno" IsReadOnly="True"/>
                 <DataGridTextColumn Width="150" Binding="{Binding Data}" CanUserSort="False" CanUserReorder="False" Header="Data"/>
                 <DataGridTextColumn Width="100" Binding="{Binding Nota}" CanUserSort="False" CanUserReorder="False" Header="Nota"/>
             </DataGrid.Columns>
         </DataGrid>
-        <ComboBox Name="turmasComboBox" SelectedValuePath="Id" DisplayMemberPath="Label" HorizontalAlignment="Left" Margin="118,26,0,0" VerticalAlignment="Top" Width="311" SelectionChanged="TurmasComboBox_SelectionChanged"/>
-        <Label Content="Turma:" HorizontalAlignment="Left" Margin="67,22,0,0" VerticalAlignment="Top"/>
+        <ComboBox Name="turmasComboBox" SelectedValuePath="Id" DisplayMemberPath="Label" HorizontalAlignment="Left" Margin="61,14,0,0" VerticalAlignment="Top" Width="480" SelectionChanged="TurmasComboBox_SelectionChanged"/>
+        <Label Content="Turma:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.362,0.831"/>
     </Grid>
 </Window>

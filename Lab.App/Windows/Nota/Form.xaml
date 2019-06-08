@@ -5,8 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lab.App.Windows.Nota"
         mc:Ignorable="d"
-        Title="Form" Height="450" Width="800">
+        Title="Formulário de Nota" Height="282.536" Width="533.368" WindowStartupLocation="CenterScreen" WindowStyle="ToolWindow">
     <Grid>
-        
+        <Label Content="Aluno:" HorizontalAlignment="Left" Margin="100,64,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="151,67,0,0" TextWrapping="Wrap"  IsReadOnly="True" Text="" VerticalAlignment="Top" Width="256"/>
+        <Label Content="Turma:" HorizontalAlignment="Left" Margin="100,92,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="151,96,0,0" TextWrapping="Wrap" IsReadOnly="True" Text="" VerticalAlignment="Top" Width="256"/>
+        <Label Content="Nota:" HorizontalAlignment="Left" Margin="100,120,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="151,124,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="256"/>
+        <Button Content="Salvar" HorizontalAlignment="Left" Margin="151,152,0,0" VerticalAlignment="Top" Width="129"/>
+        <Button Content="Cancelar" HorizontalAlignment="Left" Margin="296,152,0,0" VerticalAlignment="Top" Width="111"/>
+
     </Grid>
 </Window>

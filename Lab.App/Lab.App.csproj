@@ -150,6 +150,9 @@
     <Compile Include="Windows\Aluno\Grid.xaml.cs">
       <DependentUpon>Grid.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\Autenticacao\Identificacao.xaml.cs">
+      <DependentUpon>Identificacao.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Nota\Form.xaml.cs">
       <DependentUpon>Form.xaml</DependentUpon>
     </Compile>
@@ -185,6 +188,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\Aluno\Grid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Autenticacao\Identificacao.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

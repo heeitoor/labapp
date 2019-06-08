@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Lab.App.Windows.Aluno"
         mc:Ignorable="d"
-        Title="Grid" Height="317" Width="475">
+        Title="Alunos" Height="326" Width="484" WindowStartupLocation="CenterScreen" WindowStyle="ToolWindow">
     <Grid>
         <Label Content="Nome:" HorizontalAlignment="Left" Margin="77,25,0,0" VerticalAlignment="Top" RenderTransformOrigin="-3.41,3.139"/>
         <TextBox Name="nomeTextBox" HorizontalAlignment="Left" Height="23" Margin="127,28,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="168" KeyUp="NomeTextBox_KeyUp"/>

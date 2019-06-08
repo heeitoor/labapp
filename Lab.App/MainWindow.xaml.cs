@@ -17,6 +17,9 @@ using System.Windows.Shapes;
 using Lab.App.Models;
 using Lab.App.UserControls;
 using HELP = Lab.App.Helpers;
+using NotaUI = Lab.App.Windows.Nota;
+using AlunoUi = Lab.App.Windows.Aluno;
+using Lab.App.Windows.Autenticacao;
 
 namespace Lab.App
 {
@@ -27,11 +30,6 @@ namespace Lab.App
     {
         public MainWindow()
         {
-
-
-
-
-
             //HELP.IOHelper.Escrever(@"c:\escrita.txt", "valor da escrita de texto");
 
             //string conteudo = HELP.IOHelper.Ler(@"c:\teste.txt");
@@ -107,9 +105,9 @@ namespace Lab.App
             bool inDevelopment =
                 ConfigurationManager.AppSettings["InDevelopment"] == "true";
 
-            if (!inDevelopment)
+            if (inDevelopment)
             {
-                Login login = new Login();
+                Identificacao login = new Identificacao();
 
                 bool? resultado = login.ShowDialog();
 
@@ -124,21 +122,14 @@ namespace Lab.App
 
         private void AlunoButton_Click(object sender, RoutedEventArgs e)
         {
-            AlunoManager alunoManager = new AlunoManager();
-            alunoManager.ShowDialog();
+            AlunoUi.Grid alunoGrid = new AlunoUi.Grid();
+            alunoGrid.ShowDialog();
         }
 
         private async void NotasButton_Click(object sender, RoutedEventArgs e)
         {
-            await Task.Run(() =>
-            {
-                for (int i = 0; i < 999999999; i++)
-                {
-
-                }
-            });
-
-            MessageBox.Show("teste");
+            NotaUI.Grid grid = new NotaUI.Grid();
+            grid.ShowDialog();
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
