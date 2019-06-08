@@ -100,6 +100,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Lab.Business\Lab.Business.csproj">
+      <Project>{d63944b2-6455-4e07-900f-3ea703355645}</Project>
+      <Name>Lab.Business</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Lab.Models\Lab.Models.csproj">
       <Project>{c57d6bfa-2062-4d1c-93d7-24d26470a616}</Project>
       <Name>Lab.Models</Name>

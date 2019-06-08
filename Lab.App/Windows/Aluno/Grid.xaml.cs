@@ -1,19 +1,10 @@
-﻿using Lab.App.Business;
-using Lab.App.Helpers;
-using Lab.App.Models;
+﻿using Lab.App.Helpers;
+using Lab.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Lab.App.Windows.Aluno
 {
@@ -25,13 +16,13 @@ namespace Lab.App.Windows.Aluno
         public Grid()
         {
             InitializeComponent();
-            CarregarDados(new AlunoFiltro());
+            //CarregarDados(new AlunoFiltro());
         }
 
         #region Campos e Propriedades
 
-        private Lazy<AlunoBusiness> Business = new Lazy<AlunoBusiness>(() => new AlunoBusiness());
-        private List<Models.Aluno> alunos = null;
+        //private Lazy<AlunoBusiness> Business = new Lazy<AlunoBusiness>(() => new AlunoBusiness());
+        //private List<Models.Aluno> alunos = null;
 
         #endregion
 
@@ -39,27 +30,27 @@ namespace Lab.App.Windows.Aluno
 
         private void NomeTextBox_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Enter)
-            {
-                CarregarDados(new AlunoFiltro
-                {
-                    Nome = nomeTextBox.Text
-                });
-            }
+            //if (e.Key == Key.Enter)
+            //{
+            //    CarregarDados(new AlunoFiltro
+            //    {
+            //        Nome = nomeTextBox.Text
+            //    });
+            //}
         }
 
         private void FiltrarButton_Click(object sender, RoutedEventArgs e)
         {
-            CarregarDados(new AlunoFiltro
-            {
-                Nome = nomeTextBox.Text
-            });
+            //CarregarDados(new AlunoFiltro
+            //{
+            //    Nome = nomeTextBox.Text
+            //});
         }
 
         private void NovoButton_Click(object sender, RoutedEventArgs e)
         {
-            Form alunoForm = new Form();
-            alunoForm.ShowDialog();
+            //Form alunoForm = new Form();
+            //alunoForm.ShowDialog();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -69,22 +60,22 @@ namespace Lab.App.Windows.Aluno
 
         private void saveButton_Click(object sender, RoutedEventArgs e)
         {
-            if (xmlRadioButton.IsChecked == true)
-            {
-                string fileName = DateTime.Now.Ticks.ToString();
+            //if (xmlRadioButton.IsChecked == true)
+            //{
+            //    string fileName = DateTime.Now.Ticks.ToString();
 
-                string xml = XmlHelper.ToXml(alunos);
+            //    string xml = XmlHelper.ToXml(alunos);
 
-                IOHelper.Escrever($@"e:\{fileName}.xml", xml);
-            }
-            else if (jsonRadioButton.IsChecked == true)
-            {
+            //    IOHelper.Escrever($@"e:\{fileName}.xml", xml);
+            //}
+            //else if (jsonRadioButton.IsChecked == true)
+            //{
 
-            }
-            else if (binarioRadioButton.IsChecked == true)
-            {
+            //}
+            //else if (binarioRadioButton.IsChecked == true)
+            //{
 
-            }
+            //}
         }
 
         object t = null;
@@ -104,7 +95,7 @@ namespace Lab.App.Windows.Aluno
 
         void CarregarDados(AlunoFiltro filtro)
         {
-            alunosDataGrid.ItemsSource = alunos = Business.Value.Get(filtro);
+            //alunosDataGrid.ItemsSource = alunos = Business.Value.Get(filtro);
 
             //Lab.App.Data.EF.LabEF context = new Data.EF.LabEF();
 

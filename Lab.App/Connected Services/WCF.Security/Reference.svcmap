@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="c4f62126-c156-4244-a041-bf5c64081e04" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:3209/Identificacao.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="Identificacao.xsd" MetadataType="Schema" ID="00aaa68f-e584-4822-a6d5-28222c2efb54" SourceId="1" SourceUrl="http://localhost:3209/Identificacao.svc?xsd=xsd2" />
+    <MetadataFile FileName="Identificacao1.xsd" MetadataType="Schema" ID="5278e19a-726c-4406-a3cd-772d097f7b9b" SourceId="1" SourceUrl="http://localhost:3209/Identificacao.svc?xsd=xsd1" />
+    <MetadataFile FileName="Identificacao.wsdl" MetadataType="Wsdl" ID="71a2760e-3716-4079-8103-1f6df9cc658c" SourceId="1" SourceUrl="http://localhost:3209/Identificacao.svc?wsdl" />
+    <MetadataFile FileName="Identificacao.disco" MetadataType="Disco" ID="c9108b53-3f46-49ab-b51c-c8da2977f59a" SourceId="1" SourceUrl="http://localhost:3209/Identificacao.svc?disco" />
+    <MetadataFile FileName="Identificacao2.xsd" MetadataType="Schema" ID="73e185b1-be3c-4c1f-af4f-038b56f55e04" SourceId="1" SourceUrl="http://localhost:3209/Identificacao.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

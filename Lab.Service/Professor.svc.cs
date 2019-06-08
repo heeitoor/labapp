@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Lab.Service.Contracts;
 
@@ -18,12 +19,17 @@ namespace Lab.Service
 
         public IEnumerable<Models.Professor> Get()
         {
-            return Enumerable.Empty<Models.Professor>();
+            throw new NotImplementedException();
         }
 
         public bool Update(Models.Professor professor)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
+        }
+
+        public Models.Professor GetById(int professorId)
+        {
+            throw new NotImplementedException();
         }
     }
 }

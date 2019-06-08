@@ -11,6 +11,8 @@ using System.ServiceModel.Web;
 
 namespace Lab.Service.DataDriven
 {
+    // https://marketplace.visualstudio.com/items?itemName=CONWID.WcfDataServiceTemplateExtension
+
     [JsonFormatter]
     public class Endpoint : EntityFrameworkDataService<LabEntities>
     {

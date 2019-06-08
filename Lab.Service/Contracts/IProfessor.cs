@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ServiceModel;
+using System.ServiceModel.Web;
 
 namespace Lab.Service.Contracts
 {
@@ -18,5 +19,8 @@ namespace Lab.Service.Contracts
 
         [OperationContract]
         bool Delete(Models.Professor professor);
+
+        [OperationContract]
+        Models.Professor GetById(int professorId);
     }
 }

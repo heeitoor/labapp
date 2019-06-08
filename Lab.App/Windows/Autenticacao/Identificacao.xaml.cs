@@ -1,6 +1,4 @@
-﻿using Lab.App.Business;
-using Lab.App.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +11,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
+using Lab.App.WCF.Security;
 
 namespace Lab.App.Windows.Autenticacao
 {
@@ -21,6 +22,11 @@ namespace Lab.App.Windows.Autenticacao
     /// </summary>
     public partial class Identificacao : Window
     {
+        public Lazy<IdentificacaoClient> Client = new Lazy<IdentificacaoClient>(() =>
+        {
+            return new IdentificacaoClient();
+        });
+
         public Identificacao()
         {
             InitializeComponent();
@@ -33,24 +39,23 @@ namespace Lab.App.Windows.Autenticacao
 
         private void EntrarButton_Click(object sender, RoutedEventArgs e)
         {
-            Professor professor = new Professor
+            Models.ProfessorCredencial credencial = new Models.ProfessorCredencial
             {
                 Login = loginTextBox.Text,
                 Senha = senhaPasswordBox.Password
             };
 
-            ProfessorBusiness professorBusiness = new ProfessorBusiness();
+            Models.Identificacao result = Client.Value.Login(credencial);
 
-            bool success = professorBusiness.Login(professor);
-
-            if (success)
+            if (string.IsNullOrEmpty(result.Token))
             {
-                DialogResult = true;
+                MessageBox.Show("Dados inválidos.", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {
-                MessageBox.Show("Dados inválidos.", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
+                DialogResult = true;
             }
         }
     }
 }
+

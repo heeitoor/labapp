@@ -19,6 +19,7 @@ namespace Lab.Models
     public class Professor : ProfessorCredencial
     {
         [DataMember]
+        //[IgnoreDataMember]
         public int Id { get; set; }
     }
 }

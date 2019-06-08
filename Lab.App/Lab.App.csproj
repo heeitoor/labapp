@@ -85,42 +85,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Business\Aluno.cs" />
-    <Compile Include="Business\IBusiness.cs" />
-    <Compile Include="Business\Professor.cs" />
-    <Compile Include="Business\Usuario.cs" />
+    <Compile Include="Connected Services\WCF.Security\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Data\ADO.NET\DataAccess.cs" />
     <Compile Include="Data\ADO.NET\IDataAccess.cs" />
-    <Compile Include="Data\EF\Aluno.cs">
-      <DependentUpon>LabContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\EF\LabContext.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>LabContext.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\EF\LabContext.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>LabContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\EF\LabContext.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>LabContext.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Data\EF\Nota.cs">
-      <DependentUpon>LabContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\EF\Professor.cs">
-      <DependentUpon>LabContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\EF\Turma.cs">
-      <DependentUpon>LabContext.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Data\EF\LabContextCodeFirst.cs" />
     <Compile Include="Exceptions\Serialization.cs" />
     <Compile Include="Exceptions\XmlConvert.cs" />
-    <Compile Include="Extensions\DataTable.cs" />
     <Compile Include="Helpers\AppConfig.cs" />
     <Compile Include="Helpers\Json.cs" />
     <Compile Include="Helpers\Reflection.cs" />
@@ -133,17 +107,6 @@
     <Compile Include="Helpers\Cryptography.cs" />
     <Compile Include="Helpers\IO.cs" />
     <Compile Include="Helpers\UI.cs" />
-    <Compile Include="Models\Interfaces\IModel.cs" />
-    <Compile Include="Models\Interfaces\IUsuario.cs" />
-    <Compile Include="UserControls\AlunoForm.xaml.cs">
-      <DependentUpon>AlunoForm.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\AlunoManager.xaml.cs">
-      <DependentUpon>AlunoManager.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\Login.xaml.cs">
-      <DependentUpon>Login.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Windows\Aluno\Form.xaml.cs">
       <DependentUpon>Form.xaml</DependentUpon>
     </Compile>
@@ -171,18 +134,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="UserControls\AlunoForm.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UserControls\AlunoManager.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UserControls\Login.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Windows\Aluno\Form.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -205,8 +156,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\Aluno.cs" />
-    <Compile Include="Models\Professor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -223,15 +172,20 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EntityDeploy Include="Data\EF\LabContext.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>LabContext.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="Data\EF\LabContext.edmx.diagram">
-      <DependentUpon>LabContext.edmx</DependentUpon>
+    <None Include="Connected Services\WCF.Security\Identificacao.wsdl" />
+    <None Include="Connected Services\WCF.Security\Identificacao.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\WCF.Security\Identificacao1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\WCF.Security\Identificacao2.xsd">
+      <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\Lab.Models.Identificacao.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -242,22 +196,19 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\Lab.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="App_Data\Lab_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>Lab.mdf</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Data\EF\LabContext.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>LabContext.edmx</DependentUpon>
-      <LastGenOutput>LabContext.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Data\EF\LabContext.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>LabContext.edmx</DependentUpon>
-      <LastGenOutput>LabContext.cs</LastGenOutput>
-    </Content>
+    <None Include="Connected Services\WCF.Security\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\WCF.Security\configuration.svcinfo" />
+    <None Include="Connected Services\WCF.Security\configuration91.svcinfo" />
+    <None Include="Connected Services\WCF.Security\Identificacao.disco" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
@@ -279,6 +230,19 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Lab.Common\Lab.Common.csproj">
+      <Project>{59aab6d0-231d-494f-b81b-5b4e9f4371c1}</Project>
+      <Name>Lab.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Lab.Models\Lab.Models.csproj">
+      <Project>{c57d6bfa-2062-4d1c-93d7-24d26470a616}</Project>
+      <Name>Lab.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\WCF.Security\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
