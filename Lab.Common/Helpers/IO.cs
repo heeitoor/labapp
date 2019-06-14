@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace Lab.App.Helpers
+namespace Lab.Common.Helpers
 {
     public static class IOHelper
     {

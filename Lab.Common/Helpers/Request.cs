@@ -4,7 +4,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Lab.App.Helpers
+namespace Lab.Common.Helpers
 {
     public static class RequestHelper
     {

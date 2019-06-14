@@ -3,9 +3,46 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace Lab.App.Helpers
+namespace Lab.Common.Helpers
 {
-    public class SymetricCryptographyHelper
+    public static class AsymetricCryptographyHelper
+    {
+        public static void Encrypt(string value, string publicKey, string fileName = @"K:\crpt.cph")
+        {
+            UnicodeEncoding byteConverter = new UnicodeEncoding();
+            byte[] dataToEncrypt = byteConverter.GetBytes(value);
+  
+            byte[] encryptedData;
+            using (RSACryptoServiceProvider rsa = new RSACryptoServiceProvider())
+            {
+                rsa.FromXmlString(publicKey);
+ 
+                encryptedData = rsa.Encrypt(dataToEncrypt, false);
+            }
+
+            File.WriteAllBytes(fileName, encryptedData);
+
+            Console.WriteLine("Data has been encrypted");
+        }
+
+        public static string Decrypt(string privateKey, string fileName = @"K:\crpt.cph")
+        {
+            byte[] dataToDecrypt = File.ReadAllBytes(fileName);
+  
+            byte[] decryptedData;
+            using (RSACryptoServiceProvider rsa = new RSACryptoServiceProvider())
+            {
+                rsa.FromXmlString(privateKey);
+                decryptedData = rsa.Decrypt(dataToDecrypt, false);
+            }
+  
+            UnicodeEncoding byteConverter = new UnicodeEncoding();
+
+            return byteConverter.GetString(decryptedData);
+        }
+    }
+
+    public static class SymetricCryptographyHelper
     {
         public static string Encrypt<T>(string value, string password, string salt)
            where T : SymmetricAlgorithm, new()

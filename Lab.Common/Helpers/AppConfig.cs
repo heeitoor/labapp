@@ -1,6 +1,6 @@
 ﻿using System.Configuration;
 
-namespace Lab.App.Helpers
+namespace Lab.Common.Helpers
 {
     public sealed class Settings
     {

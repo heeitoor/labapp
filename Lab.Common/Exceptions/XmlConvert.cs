@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Lab.App.Exceptions
+namespace Lab.Common.Exceptions
 {
     public class XmlConvertException : Exception
     {

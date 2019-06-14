@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 
-namespace Lab.App.Helpers
+namespace Lab.Common.Helpers
 {
     public class SerializationHelper
     {

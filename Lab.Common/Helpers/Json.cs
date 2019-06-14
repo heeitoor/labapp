@@ -2,7 +2,7 @@
 using System.IO;
 using System.Runtime.Serialization.Json;
 
-namespace Lab.App.Helpers
+namespace Lab.Common.Helpers
 {
     public static class JsonHelper
     {

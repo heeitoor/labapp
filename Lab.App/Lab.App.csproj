@@ -93,20 +93,6 @@
     <Compile Include="Data\ADO.NET\DataAccess.cs" />
     <Compile Include="Data\ADO.NET\IDataAccess.cs" />
     <Compile Include="Data\EF\LabContextCodeFirst.cs" />
-    <Compile Include="Exceptions\Serialization.cs" />
-    <Compile Include="Exceptions\XmlConvert.cs" />
-    <Compile Include="Helpers\AppConfig.cs" />
-    <Compile Include="Helpers\Json.cs" />
-    <Compile Include="Helpers\Reflection.cs" />
-    <Compile Include="Helpers\Request.cs" />
-    <Compile Include="Helpers\Serialization.cs" />
-    <Compile Include="Helpers\Task.cs" />
-    <Compile Include="Helpers\Word.cs" />
-    <Compile Include="Helpers\Xml.cs" />
-    <Compile Include="Helpers\Hash.cs" />
-    <Compile Include="Helpers\Cryptography.cs" />
-    <Compile Include="Helpers\IO.cs" />
-    <Compile Include="Helpers\UI.cs" />
     <Compile Include="Windows\Aluno\Form.xaml.cs">
       <DependentUpon>Form.xaml</DependentUpon>
     </Compile>

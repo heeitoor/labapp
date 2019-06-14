@@ -1,13 +1,9 @@
-﻿using Lab.App.Exceptions;
+﻿using Lab.Common.Exceptions;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace Lab.App.Helpers
+namespace Lab.Common.Helpers
 {
     public static class XmlHelper
     {

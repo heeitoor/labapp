@@ -14,6 +14,8 @@ using System.Windows.Shapes;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using Lab.App.WCF.Security;
+using System.Threading;
+using System.Diagnostics;
 
 namespace Lab.App.Windows.Autenticacao
 {
@@ -32,9 +34,27 @@ namespace Lab.App.Windows.Autenticacao
             InitializeComponent();
         }
 
-        private void CancelarButton_Click(object sender, RoutedEventArgs e)
+        private async void CancelarButton_Click(object sender, RoutedEventArgs e)
         {
-            DialogResult = false;
+            await Task.Run(() =>
+            {
+                for (int i = 0; i < 1000; i++)
+                {
+                    Trace.WriteLine(i);
+                    Thread.Sleep(500);
+                }
+            });
+            Title = "Identificação " + DateTime.Now.Ticks.ToString();
+            //cancelarButton.Dispatcher.BeginInvoke(new Action(() =>
+            //{
+            //    for (int i = 0; i < 1000; i++)
+            //    {
+            //        Title = "Identificacação" + DateTime.Now.Ticks.ToString();
+            //        Thread.Sleep(500);
+            //    }
+            //}));
+
+            //DialogResult = false;
         }
 
         private void EntrarButton_Click(object sender, RoutedEventArgs e)

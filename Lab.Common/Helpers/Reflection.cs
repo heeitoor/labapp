@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Linq;
 
-namespace Lab.App.Helpers
+namespace Lab.Common.Helpers
 {
     public class InfoAttribute : Attribute
     {
