@@ -93,6 +93,12 @@
     <Compile Include="Data\ADO.NET\DataAccess.cs" />
     <Compile Include="Data\ADO.NET\IDataAccess.cs" />
     <Compile Include="Data\EF\LabContextCodeFirst.cs" />
+    <Compile Include="UserControls\Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UserInfo.xaml.cs">
+      <DependentUpon>UserInfo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Aluno\Form.xaml.cs">
       <DependentUpon>Form.xaml</DependentUpon>
     </Compile>
@@ -120,6 +126,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="UserControls\Login.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\UserInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\Aluno\Form.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

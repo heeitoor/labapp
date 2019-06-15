@@ -12,6 +12,8 @@ namespace Lab.App
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static string Usuario { get; set; }
+
         public MainWindow()
         {
             bool inDevelopment =
@@ -42,6 +44,11 @@ namespace Lab.App
         {
             NotaUI.Grid grid = new NotaUI.Grid();
             grid.ShowDialog();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            userInfo.Nome = Usuario;
         }
     }
 }

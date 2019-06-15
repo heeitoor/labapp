@@ -32,6 +32,8 @@ namespace Lab.App.Windows.Autenticacao
         public Identificacao()
         {
             InitializeComponent();
+
+            
         }
 
         private async void CancelarButton_Click(object sender, RoutedEventArgs e)
@@ -59,11 +61,8 @@ namespace Lab.App.Windows.Autenticacao
 
         private void EntrarButton_Click(object sender, RoutedEventArgs e)
         {
-            Models.ProfessorCredencial credencial = new Models.ProfessorCredencial
-            {
-                Login = loginTextBox.Text,
-                Senha = senhaPasswordBox.Password
-            };
+            Models.ProfessorCredencial credencial = LoginForm.DataContext as Models.ProfessorCredencial;
+            credencial.Senha = LoginForm.Senha;
 
             Models.Identificacao result = Client.Value.Login(credencial);
 
@@ -73,6 +72,7 @@ namespace Lab.App.Windows.Autenticacao
             }
             else
             {
+                MainWindow.Usuario = credencial.Login;
                 DialogResult = true;
             }
         }
