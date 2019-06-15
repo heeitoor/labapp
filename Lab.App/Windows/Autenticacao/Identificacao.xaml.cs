@@ -38,7 +38,7 @@ namespace Lab.App.Windows.Autenticacao
 
         private async void CancelarButton_Click(object sender, RoutedEventArgs e)
         {
-            await Task.Run(() =>
+            Task.Run(() =>
             {
                 for (int i = 0; i < 1000; i++)
                 {
@@ -47,14 +47,14 @@ namespace Lab.App.Windows.Autenticacao
                 }
             });
             Title = "Identificação " + DateTime.Now.Ticks.ToString();
-            //cancelarButton.Dispatcher.BeginInvoke(new Action(() =>
-            //{
-            //    for (int i = 0; i < 1000; i++)
-            //    {
-            //        Title = "Identificacação" + DateTime.Now.Ticks.ToString();
-            //        Thread.Sleep(500);
-            //    }
-            //}));
+            //            await cancelarButton.Dispatcher.BeginInvoke(new Action(() =>
+            //            {
+            //                for (int i = 0; i < int.MaxValue; i++)
+            //                {
+            //                    Title = "Identificacação" + DateTime.Now.Ticks.ToString();
+            ////                    Thread.Sleep(500);
+            //                }
+            //            }));
 
             //DialogResult = false;
         }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Linq;
@@ -12,9 +13,14 @@ namespace Lab.Data.Entity
     public class Professor
     {
         public int Id { get; set; }
-        public string Nome { get; set; }
+        [StringLength(20)]
+        public string Nome { get; set; }        
         public string Login { get; set; }
+        [Required]
         public string Senha { get; set; }
+        [Required]
+        [Compare("Senha")]
+        public string SenhaConfirmacao { get; set; }
         public DateTime? UltimoLogin { get; set; }
 
         public virtual ICollection<Nota> Nota { get; set; }
@@ -24,6 +30,8 @@ namespace Lab.Data.Entity
     public class Nota
     {
         public int Id { get; set; }
+        [Required]
+        
         public int AlunoId { get; set; }
         public int ProfessorId { get; set; }
         public int TurmaId { get; set; }

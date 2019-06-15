@@ -3,11 +3,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:UserControls="clr-namespace:Lab.App.UserControls" x:Class="Lab.App.Windows.Autenticacao.Identificacao"
+        xmlns:UC="clr-namespace:Lab.App.UserControls"
+        x:Class="Lab.App.Windows.Autenticacao.Identificacao"
         mc:Ignorable="d"
-        Title="Identificacao" Height="253.534" Width="387.422" WindowStartupLocation="CenterScreen" WindowStyle="ToolWindow">
+        Title="Identificacao" Height="253.534" Width="400.766" WindowStartupLocation="CenterScreen" WindowStyle="ToolWindow">
     <Grid>
-        <UserControls:Login x:Name="LoginForm" HorizontalAlignment="Left" Emoji=":(" Height="131" Margin="91,24,0,0" VerticalAlignment="Top" Width="189"/>
+        <UC:Login x:Name="LoginForm" HorizontalAlignment="Left" Emoji=":D" Height="131" Margin="91,24,0,0" VerticalAlignment="Top" Width="189"/>
         <Button Name="entrarButton" Content="Entrar" HorizontalAlignment="Left" Margin="109,155,0,0" VerticalAlignment="Top" Width="80" Click="EntrarButton_Click" Height="27" Background="#FFCCE8FF"/>
         <Button Name="cancelarButton" Content="Cancelar" HorizontalAlignment="Left" Margin="194,155,0,0" VerticalAlignment="Top" Width="75" Height="27" Background="#FFFFABAB" Click="CancelarButton_Click"/>
     </Grid>

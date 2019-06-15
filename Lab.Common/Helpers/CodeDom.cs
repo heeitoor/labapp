@@ -1,12 +1,21 @@
 ﻿using Microsoft.CSharp;
-using System;
 using System.CodeDom;
 using System.CodeDom.Compiler;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+
+namespace Sisnema
+{
+    using System;
+
+    class Curso
+    {
+        public System.String GetNome(System.String nome)
+        {
+            return nome;
+        }
+    }
+}
 
 namespace Lab.Common.Helpers
 {
@@ -28,7 +37,7 @@ namespace Lab.Common.Helpers
 
             getNome.Parameters.Add(new CodeParameterDeclarationExpression("System.String", "nome"));
             getNome.Statements.Add(new CodeMethodReturnStatement(new CodeArgumentReferenceExpression("nome")));
-
+            
             cursoType.Members.Add(getNome);
 
             sisnemaNamespace.Types.Add(cursoType);
@@ -38,6 +47,7 @@ namespace Lab.Common.Helpers
 
             return codeUnit;
         }
+
         public static void GenerateAssembly(CodeCompileUnit codeCompileUnit)
         {
             CSharpCodeProvider provider = new CSharpCodeProvider();
@@ -47,6 +57,7 @@ namespace Lab.Common.Helpers
             compilerSettings.ReferencedAssemblies.Add("System.dll");
 
             compilerSettings.OutputAssembly = "Sisnema.dll";
+            //compilerSettings.GenerateExecutable = true;
 
             var compilationResults = provider.CompileAssemblyFromDom(compilerSettings, codeCompileUnit);
 

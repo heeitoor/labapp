@@ -8,11 +8,16 @@
              d:DesignHeight="50" d:DesignWidth="140" Loaded="UserControl_Loaded">
     <UserControl.Resources>
         <Style x:Key="LabelStyle" TargetType="Label">
-            <Setter Property="Foreground" Value="Gray" />
+            <Setter Property="Foreground" Value="Red" />
             <Setter Property="FontSize" Value="14" />
         </Style>
     </UserControl.Resources>
     <Grid>
-        <Label Name="greetingsLabel" Content="Olá, " HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Style="{StaticResource LabelStyle}"/>
+        <Label Name="greetingsLabel"
+               Content="Olá, "
+               HorizontalAlignment="Left"
+               Margin="10,10,0,0"
+               VerticalAlignment="Top"
+               Style="{StaticResource LabelStyle}"/>
     </Grid>
 </UserControl>

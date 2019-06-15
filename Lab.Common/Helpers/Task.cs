@@ -166,7 +166,6 @@ namespace Lab.Common.Helpers
                 throw new ArgumentOutOfRangeException();
             });
 
-
             Thread.Sleep(100);
             GC.Collect();
             GC.WaitForPendingFinalizers();
@@ -184,7 +183,9 @@ namespace Lab.Common.Helpers
                     {
                         lock (saldo)
                         {
-                            Thread.Sleep(1000);
+                            Console.WriteLine("T1 vai travar por 5 segs");
+                            Thread.Sleep(5000);
+                            Console.WriteLine("T1 vai destravar");
                         }
                     }
                     saldo = ((int)saldo) + 1;
@@ -198,7 +199,7 @@ namespace Lab.Common.Helpers
                 {
                     lock (saldo)
                     {
-                        Console.WriteLine($"Thread 2: {saldo}");
+                        Console.WriteLine($"[{DateTime.Now.ToString("hh:mm:ss")}] Thread 2: {saldo}");
                     }
                     Thread.Sleep(500);
                 }

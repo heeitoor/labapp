@@ -29,23 +29,13 @@ namespace Lab.App.UserControls
         }
 
         public static readonly DependencyProperty EmojiProperty =
-            DependencyProperty.Register("Emoji", typeof(string), typeof(Login), new PropertyMetadata(""));
+            DependencyProperty.Register("Emoji", typeof(string), typeof(Login), new PropertyMetadata(string.Empty));
 
         public Login()
         {
             InitializeComponent();
 
             DataContext = new Models.ProfessorCredencial();
-        }
-
-        private void EntrarButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void CancelarButton_Click(object sender, RoutedEventArgs e)
-        {
-
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
